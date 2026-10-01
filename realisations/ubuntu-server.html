@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Serveur de test Ubuntu — Réalisations</title>
+<link rel="icon" href="../images/fav.png">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="../index.html" class="brand"><span class="brand-logo">S</span>Soufiyan AHMED ABOKAR</a>
+    <button class="nav-toggle">☰</button>
+    <div class="nav-links">
+      <a href="../index.html#about">À propos de moi</a>
+      <a href="../index.html#stages">Mes Stages</a>
+      <a href="../index.html#formation">Formation</a>
+      <a href="index.html">Réalisations</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+    <button class="theme-toggle" aria-label="Changer de thème">☀️</button>
+  </div>
+</nav>
+
+<section>
+  <div class="container">
+    <a href="index.html" class="back-link">← Retour aux réalisations</a>
+    <div class="article-cover reveal">
+      <img src="../images/blogs/ubuntu-server-cover.svg" alt="Serveur de test Ubuntu">
+    </div>
+    <div class="article-body reveal">
+      <h1>Serveur de test pour applications internes</h1>
+      <p>Mise en place d'un serveur Ubuntu de test pour héberger des applications internes, avec Nginx en reverse proxy devant Node.js.</p>
+
+      <h2>Contexte</h2>
+      <p>Dans le cadre de mon stage BTS SIO SISR, l'entreprise avait besoin d'un environnement de test séparé de la production pour valider les évolutions d'applications internes avant leur mise en ligne définitive. J'ai mis en place et configuré ce serveur de A à Z.</p>
+
+      <h2>Objectifs</h2>
+      <ul>
+        <li>Installer et configurer un serveur Ubuntu dédié à l'environnement de test</li>
+        <li>Déployer les applications internes avec Node.js</li>
+        <li>Mettre en place Nginx comme reverse proxy devant l'application</li>
+        <li>Garantir un environnement stable, isolé de la production</li>
+      </ul>
+
+      <h2>Fonctionnement</h2>
+      <ul>
+        <li>Installation d'Ubuntu Server et mise à jour du système</li>
+        <li>Installation de Node.js et déploiement de l'application interne</li>
+        <li>Configuration de Nginx en reverse proxy : redirection des requêtes, gestion des en-têtes et des noms de domaine</li>
+        <li>Utilisation de PM2 comme gestionnaire de processus (redémarrage automatique, démarrage au boot)</li>
+        <li>Tests de bon fonctionnement avant validation par l'équipe</li>
+      </ul>
+
+      <h2>Ce que ça m'a apporté</h2>
+      <ul>
+        <li>La configuration d'un serveur Linux de test complet, de l'installation à la mise en service</li>
+        <li>La compréhension du rôle d'un reverse proxy en production</li>
+        <li>La gestion de processus applicatifs avec PM2</li>
+        <li>Une meilleure autonomie sur l'administration système Linux</li>
+      </ul>
+
+      <h2>Améliorations possibles</h2>
+      <ul>
+        <li>Mettre en place un certificat SSL/TLS (Let's Encrypt)</li>
+        <li>Automatiser le déploiement avec un script ou un pipeline CI/CD simple</li>
+        <li>Ajouter une supervision de l'usage des ressources (CPU/RAM)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container"><span>© 2026 Soufiyan AHMED ABOKAR — Tous droits réservés</span></div>
+</footer>
+
+<script src="../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#12141c"/>
+      <stop offset="100%" stop-color="#1b1e2b"/>
+    </linearGradient>
+    <linearGradient id="py" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3776AB"/>
+      <stop offset="100%" stop-color="#FFD43B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Titre -->
+  <text x="600" y="95" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="700" fill="#f5f5f5" text-anchor="middle">Script de monitoring Python</text>
+  <text x="600" y="135" font-family="Segoe UI, Arial, sans-serif" font-size="20" fill="#9aa0b4" text-anchor="middle">Sites · Serveurs · API — Alertes automatiques par email</text>
+
+  <!-- Script central -->
+  <g transform="translate(600,300)">
+    <rect x="-90" y="-55" width="180" height="110" rx="16" fill="url(#py)"/>
+    <text x="0" y="10" font-family="Consolas, monospace" font-size="26" font-weight="700" fill="#12141c" text-anchor="middle">.py</text>
+  </g>
+
+  <!-- Sources surveillées (gauche) -->
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#e6e6e6">
+    <g transform="translate(180,180)">
+      <rect x="-90" y="-28" width="180" height="56" rx="10" fill="#232636" stroke="#3a3f55" stroke-width="1.5"/>
+      <text x="0" y="6" text-anchor="middle">🌐 Sites &amp; apps web</text>
+    </g>
+    <g transform="translate(180,300)">
+      <rect x="-90" y="-28" width="180" height="56" rx="10" fill="#232636" stroke="#3a3f55" stroke-width="1.5"/>
+      <text x="0" y="6" text-anchor="middle">🖥️ Serveurs (ping)</text>
+    </g>
+    <g transform="translate(180,420)">
+      <rect x="-90" y="-28" width="180" height="56" rx="10" fill="#232636" stroke="#3a3f55" stroke-width="1.5"/>
+      <text x="0" y="6" text-anchor="middle">🔑 API interne</text>
+    </g>
+  </g>
+
+  <!-- Flèches gauche -> centre -->
+  <g stroke="#5a6180" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <path d="M270,180 C400,180 420,260 505,290"/>
+    <path d="M270,300 L505,300"/>
+    <path d="M270,420 C400,420 420,340 505,310"/>
+  </g>
+
+  <!-- Résultat (droite) -->
+  <g transform="translate(1000,300)" font-family="Segoe UI, Arial, sans-serif" font-size="16">
+    <rect x="-95" y="-28" width="190" height="56" rx="10" fill="#2a1f22" stroke="#7a3a3a" stroke-width="1.5"/>
+    <text x="0" y="6" fill="#f0b4b4" text-anchor="middle">✉️ Email d'alerte</text>
+  </g>
+
+  <!-- Flèche centre -> droite -->
+  <path d="M690,300 L905,300" stroke="#5a6180" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#5a6180"/>
+    </marker>
+  </defs>
+
+  <text x="600" y="590" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#6b7190" text-anchor="middle">Python · requests · smtplib · crontab</text>
+</svg>

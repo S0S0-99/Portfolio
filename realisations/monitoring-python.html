@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Script de monitoring Python — Réalisations</title>
+<link rel="icon" href="../images/fav.png">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="../index.html" class="brand"><span class="brand-logo">S</span>Soufiyan AHMED ABOKAR</a>
+    <button class="nav-toggle">☰</button>
+    <div class="nav-links">
+      <a href="../index.html#about">À propos de moi</a>
+      <a href="../index.html#stages">Mes Stages</a>
+      <a href="../index.html#formation">Formation</a>
+      <a href="index.html">Réalisations</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+    <button class="theme-toggle" aria-label="Changer de thème">☀️</button>
+  </div>
+</nav>
+
+<section>
+  <div class="container">
+    <a href="index.html" class="back-link">← Retour aux réalisations</a>
+    <div class="article-cover reveal">
+      <img src="../images/blogs/monitoring-cover.svg" alt="Script de monitoring Python">
+    </div>
+    <div class="article-body reveal">
+      <h1>Script de monitoring automatisé en Python</h1>
+      <p>Un script Python développé en stage pour surveiller automatiquement serveurs, sites web et API internes, avec alerte email en cas de panne.</p>
+
+      <h2>Contexte</h2>
+      <p>Dans le cadre de mon stage BTS SIO SISR, l'entreprise avait besoin d'un outil de surveillance simple pour être alertée automatiquement en cas de panne, sans dépendre d'une solution de monitoring payante ou complexe à déployer. J'ai développé un script Python répondant à ce besoin, exécuté quotidiennement via crontab sur un serveur Linux.</p>
+
+      <h2>Objectifs du script</h2>
+      <ul>
+        <li>La disponibilité des sites web et applications internes utilisés au quotidien (HTTP 200 attendu)</li>
+        <li>La disponibilité des serveurs de domaine via un test de ping</li>
+        <li>La validité d'une API interne, en s'assurant qu'elle répond et renvoie des données</li>
+      </ul>
+      <p>Dès qu'une anomalie est détectée, un email d'alerte est envoyé automatiquement aux personnes concernées via SMTP.</p>
+
+      <h2>Fonctionnement</h2>
+      <ul>
+        <li>Une liste de sites/applications est parcourue avec le module <code>requests</code> ; le code HTTP de chaque réponse est analysé</li>
+        <li>Une liste de serveurs est testée avec un ping système (compatible Windows/Linux via <code>platform</code>)</li>
+        <li>Un appel à l'API interne vérifie qu'elle répond et que la réponse n'est pas vide</li>
+        <li>Chaque anomalie déclenche l'envoi d'un mail via <code>smtplib</code></li>
+        <li>Le script tourne seul, planifié via crontab</li>
+      </ul>
+
+      <h2>Ce que ça m'a apporté</h2>
+      <ul>
+        <li>Les requêtes HTTP et la gestion des exceptions réseau</li>
+        <li>L'envoi d'emails automatisés en Python (SMTP, MIME)</li>
+        <li>L'exécution de commandes système multiplateforme</li>
+        <li>La consommation d'une API interne avec authentification</li>
+        <li>L'automatisation via crontab sous Linux</li>
+      </ul>
+
+      <h2>Le code</h2>
+      <p><em>Le script ci-dessous a été anonymisé (noms de domaine, adresses email, identifiants et clés d'API réels remplacés par des valeurs génériques) afin de respecter la confidentialité de l'entreprise.</em></p>
+
+      <pre><code>import urllib3
+import requests
+import smtplib
+import subprocess
+import platform
+
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+username = "no_reply@entreprise.fr"
+password = ""  # récupéré depuis une variable d'environnement en production
+
+mail_to = [
+    "responsable.it@entreprise.fr",
+    "admin.reseau@entreprise.fr",
+    "technicien@entreprise.fr"
+]
+
+smtp_server = "smtp.office365.com"
+smtp_port = 587
+
+api_url = "https://app.entreprise.fr/api/module-interne/consommation/000/?debut=2026-01-01T00:00:00&amp;fin=2026-12-01T00:00:00"
+
+api_headers = {
+    "Authorization": ""  # clé API à ne jamais partager
+}
+
+sites = [
+    "https://app.entreprise.fr/module1",
+    "https://outil-metier1.entreprise.fr",
+    "https://crm.entreprise.fr",
+    "https://app.entreprise.fr/espace-client/login",
+]
+
+servers = ["SRV-DOM", "SRV-BDD"]
+
+def send_mail(subject, body):
+    msg = MIMEMultipart()
+    msg["From"] = username
+    msg["To"] = ", ".join(mail_to)
+    msg["Subject"] = subject
+    msg.attach(MIMEText(body, "plain"))
+    try:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+        server.starttls()
+        server.login(username, password)
+        server.sendmail(username, mail_to, msg.as_string())
+        server.quit()
+    except Exception as e:
+        print("Erreur connexion email", e)
+
+def ping_host(host):
+    param = "-n" if platform.system().lower() == "windows" else "-c"
+    command = ["ping", param, "1", host]
+    try:
+        result = subprocess.run(command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        return result.returncode == 0
+    except:
+        return False
+
+# ... vérification des sites, de l'API et des serveurs, avec envoi
+# d'alerte email à chaque anomalie détectée (voir version complète
+# anonymisée, disponible sur demande)
+</code></pre>
+
+      <h2>Améliorations possibles</h2>
+      <ul>
+        <li>Stocker le mot de passe et la clé API dans des variables d'environnement</li>
+        <li>Ajouter un fichier de log pour l'historique des incidents</li>
+        <li>Passer à un rapport groupé en fin d'exécution plutôt qu'un email par anomalie</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container"><span>© 2026 Soufiyan AHMED ABOKAR — Tous droits réservés</span></div>
+</footer>
+
+<script src="../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#12141c"/>
+      <stop offset="100%" stop-color="#1b1e2b"/>
+    </linearGradient>
+    <linearGradient id="ws" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00A4EF"/>
+      <stop offset="100%" stop-color="#0067B8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <text x="600" y="95" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="700" fill="#f5f5f5" text-anchor="middle">Infrastructure Windows Server</text>
+  <text x="600" y="135" font-family="Segoe UI, Arial, sans-serif" font-size="20" fill="#9aa0b4" text-anchor="middle">Active Directory · DNS/DHCP · Déploiement WDS/FOG</text>
+
+  <!-- Contrôleur de domaine central -->
+  <g transform="translate(600,300)">
+    <rect x="-100" y="-55" width="200" height="110" rx="16" fill="url(#ws)"/>
+    <text x="0" y="-14" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">Contrôleur de domaine</text>
+    <text x="0" y="10" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#e6f2ff" text-anchor="middle">AD DS</text>
+    <text x="0" y="30" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#e6f2ff" text-anchor="middle">DNS · DHCP</text>
+  </g>
+
+  <!-- Services autour -->
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#e6e6e6">
+    <g transform="translate(180,180)">
+      <rect x="-95" y="-28" width="190" height="56" rx="10" fill="#232636" stroke="#3a3f55" stroke-width="1.5"/>
+      <text x="0" y="6" text-anchor="middle">🗂️ Unités d'organisation</text>
+    </g>
+    <g transform="translate(180,420)">
+      <rect x="-95" y="-28" width="190" height="56" rx="10" fill="#232636" stroke="#3a3f55" stroke-width="1.5"/>
+      <text x="0" y="6" text-anchor="middle">⚙️ Stratégies GPO</text>
+    </g>
+    <g transform="translate(1020,180)">
+      <rect x="-95" y="-28" width="190" height="56" rx="10" fill="#232636" stroke="#3a3f55" stroke-width="1.5"/>
+      <text x="0" y="6" text-anchor="middle">💻 Déploiement WDS</text>
+    </g>
+    <g transform="translate(1020,420)">
+      <rect x="-95" y="-28" width="190" height="56" rx="10" fill="#232636" stroke="#3a3f55" stroke-width="1.5"/>
+      <text x="0" y="6" text-anchor="middle">📀 Clonage FOG</text>
+    </g>
+  </g>
+
+  <g stroke="#5a6180" stroke-width="2" fill="none">
+    <path d="M275,180 C420,180 460,250 505,275"/>
+    <path d="M275,420 C420,420 460,350 505,325"/>
+    <path d="M925,180 C780,180 740,250 695,275"/>
+    <path d="M925,420 C780,420 740,350 695,325"/>
+  </g>
+
+  <text x="600" y="590" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#6b7190" text-anchor="middle">Windows Server · Active Directory · VirtualBox</text>
+</svg>

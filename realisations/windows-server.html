@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Infrastructure Windows Server — Réalisations</title>
+<link rel="icon" href="../images/fav.png">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="../index.html" class="brand"><span class="brand-logo">S</span>Soufiyan AHMED ABOKAR</a>
+    <button class="nav-toggle">☰</button>
+    <div class="nav-links">
+      <a href="../index.html#about">À propos de moi</a>
+      <a href="../index.html#stages">Mes Stages</a>
+      <a href="../index.html#formation">Formation</a>
+      <a href="index.html">Réalisations</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+    <button class="theme-toggle" aria-label="Changer de thème">☀️</button>
+  </div>
+</nav>
+
+<section>
+  <div class="container">
+    <a href="index.html" class="back-link">← Retour aux réalisations</a>
+    <div class="article-cover reveal">
+      <img src="../images/blogs/windows-server-cover.svg" alt="Infrastructure Windows Server">
+    </div>
+    <div class="article-body reveal">
+      <h1>Infrastructure Windows Server</h1>
+      <p>Déploiement d'une infrastructure Windows Server complète en environnement virtualisé, incluant Active Directory, DNS/DHCP et déploiement de postes.</p>
+
+      <h2>Contexte</h2>
+      <p>Dans le cadre de mon BTS SIO option SISR, j'ai mis en place une infrastructure Windows Server complète en environnement virtualisé (VirtualBox), reproduisant l'architecture type d'un parc informatique d'entreprise, du contrôleur de domaine jusqu'au déploiement automatisé des postes clients.</p>
+
+      <h2>Objectifs</h2>
+      <ul>
+        <li>Mettre en place un contrôleur de domaine avec Active Directory (AD DS)</li>
+        <li>Configurer les services réseau essentiels : DNS et DHCP</li>
+        <li>Automatiser le déploiement de postes clients via WDS et FOG</li>
+        <li>Structurer les utilisateurs et appliquer des stratégies de groupe (GPO)</li>
+      </ul>
+
+      <h2>Fonctionnement</h2>
+      <p><strong>Active Directory (AD DS)</strong></p>
+      <ul>
+        <li>Installation du rôle AD DS et promotion du serveur en contrôleur de domaine</li>
+        <li>Création d'unités d'organisation (UO) pour structurer utilisateurs et postes</li>
+        <li>Création des comptes utilisateurs et groupes de sécurité</li>
+      </ul>
+      <p><strong>DNS / DHCP</strong></p>
+      <ul>
+        <li>Configuration du serveur DNS pour la résolution de noms du domaine</li>
+        <li>Mise en place d'une étendue DHCP pour l'attribution automatique d'adresses IP</li>
+      </ul>
+      <p><strong>Déploiement de postes (WDS / FOG)</strong></p>
+      <ul>
+        <li>Configuration du rôle WDS pour le déploiement d'images Windows par le réseau (PXE)</li>
+        <li>Mise en place de FOG comme solution complémentaire de clonage/déploiement multi-postes</li>
+      </ul>
+      <p><strong>Gestion des utilisateurs et GPO</strong></p>
+      <ul>
+        <li>Application de stratégies de groupe (GPO) pour homogénéiser la configuration des postes</li>
+      </ul>
+
+      <h2>Ce que ça m'a apporté</h2>
+      <ul>
+        <li>Une compréhension concrète du fonctionnement d'un domaine Active Directory</li>
+        <li>La configuration de bout en bout des services réseau d'un environnement Windows Server</li>
+        <li>La mise en place d'un déploiement de postes automatisé</li>
+        <li>Une bonne base pour administrer un parc informatique en environnement professionnel</li>
+      </ul>
+
+      <h2>Améliorations possibles</h2>
+      <ul>
+        <li>Ajouter un second contrôleur de domaine pour la redondance</li>
+        <li>Mettre en place une sauvegarde automatisée de l'annuaire AD</li>
+        <li>Documenter les GPO appliquées dans un tableau de suivi</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container"><span>© 2026 Soufiyan AHMED ABOKAR — Tous droits réservés</span></div>
+</footer>
+
+<script src="../js/script.js"></script>
+</body>
+</html>
