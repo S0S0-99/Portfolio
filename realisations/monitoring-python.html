@@ -78,7 +78,7 @@ from email.mime.text import MIMEText
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 username = "no_reply@entreprise.fr"
-password = ""  # récupéré depuis une variable d'environnement en production
+password = ""  
 
 mail_to = [
     "responsable.it@entreprise.fr",
@@ -89,20 +89,20 @@ mail_to = [
 smtp_server = "smtp.office365.com"
 smtp_port = 587
 
-api_url = "https://app.entreprise.fr/api/module-interne/consommation/000/?debut=2026-01-01T00:00:00&amp;fin=2026-12-01T00:00:00"
+api_url = "https://app.entreprise.fr"
 
 api_headers = {
     "Authorization": ""  # clé API à ne jamais partager
 }
 
 sites = [
-    "https://app.entreprise.fr/module1",
+    "https://app1.entreprise.fr",
     "https://outil-metier1.entreprise.fr",
-    "https://crm.entreprise.fr",
-    "https://app.entreprise.fr/espace-client/login",
+    "https://app2.entreprise.fr",
+    "https://app3.entreprise.fr",
 ]
 
-servers = ["SRV-DOM", "SRV-BDD"]
+servers = ["SRV-01", "SRV-02"]
 
 def send_mail(subject, body):
     msg = MIMEMultipart()
