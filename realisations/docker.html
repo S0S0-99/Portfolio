@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Cybersécurité : Docker, Nginx Proxy Manager & DVWA</title>
+    <link rel="icon" href="../images/photo-profile/favicon.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- FontAwesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- NAVBAR (Reprise de ton modèle) -->
+    <nav class="navbar">
+      <div class="container">
+        <a href="../index.html" class="brand">
+          <span class="brand-logo"><img src="../images/photo-profile/favicon.png" alt="Logo" style="width: 24px; height: 24px; object-fit: contain;"></span>
+          Soufiyan AHMED ABOKAR
+        </a>
+        <button class="nav-toggle">☰</button>
+        <div class="nav-links">
+          <a href="../index.html#about">À propos de moi</a>
+          <a href="../index.html#stages">Mes Stages</a>
+          <a href="../index.html#formation">Formation</a>
+          <a href="index.html">Réalisations</a>
+          <a href="../alternance/alternance.html">Alternance</a>
+          <a href="../procedures/procedures.html">Procédures</a>
+          <a href="../index.html#contact">Contact</a>
+        </div>
+        <button class="theme-toggle" aria-label="Changer de thème">☀️</button>
+      </div>
+    </nav>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main class="container page-content">
+        
+      
+      <!-- En-tête du projet -->
+      <section class="project-header">
+        <img src="../images/blogs/schema-docker.svg" alt="Lab Cybersécurité Docker & DVWA">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Retour aux réalisations</a>
+        <h1>Lab Cybersécurité & Conteneurisation</h1>
+        <p class="subtitle">Déploiement d'une infrastructure isolée avec Docker Compose, Nginx Proxy Manager et la cible d'entraînement DVWA.</p>
+        
+        <!-- Badges / Tags -->
+        <div class="tags">
+          <span class="tag">Docker & Docker Compose</span>
+          <span class="tag">Nginx Proxy Manager</span>
+          <span class="tag">Ubuntu Server</span>
+          <span class="tag">Cybersécurité / Pentest</span>
+          <span class="tag">Réseau Bridge / DNS</span>
+        </div>
+      </section>
+
+      <!-- Section : Schéma & Architecture -->
+      <section class="project-section">
+        
+        <h2><i class="fas fa-network-wired"></i> 1. Architecture Technique</h2>
+        <p>
+          Ce laboratoire a été déployé sur une machine virtuelle Ubuntu Server hébergée via VirtualBox. L'objectif était de compartimenter les services à l'aide d'un réseau Docker privé de type <code>bridge</code> (<code>secure-net</code>).
+        </p>
+        
+        <!-- Emplacement pour ton schéma (ex: schema-dvwa.png) -->
+        <div class="project-image-container">
+          <img src="../images/blogs/schema-docker.png" alt="Schéma d'architecture Docker DVWA et Reverse Proxy" style="width:100%; max-width:700px; border-radius:8px; border:1px solid #334155;">
+          <p class="image-caption">Schéma de principe : Routage du trafic via le Reverse Proxy vers l'application isolée.</p>
+        </div>
+      </section>
+
+      <!-- Section : Orchestration -->
+      <section class="project-section">
+        <h2><i class="fas fa-code"></i> 2. Orchestration (Docker Compose)</h2>
+        <p>
+          L'utilisation de Docker Compose permet de garantir un déploiement propre, rapide et reproductible de la stack. Le fichier orchestre deux services clés :
+        </p>
+        <ul>
+          <li><strong>proxy-manager (Nginx Proxy Manager) :</strong> Reverse proxy servant de point d'entrée unique (ports 80/443) et assurant le routage par nom de domaine.</li>
+          <li><strong>dvwa-target (DVWA) :</strong> Application PHP/MySQL vulnérable, totalement isolée du monde extérieur, servant de bac à sable pour l'analyse des vulnérabilités web.</li>
+        </ul>
+
+        <!-- Bloc de code repliable pour le docker-compose -->
+        <details class="code-accordion">
+          <summary>Voir le fichier <code>docker-compose.yml</code></summary>
+          <pre><code>services:
+  proxy-manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: nginx-proxy-manager
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./npm/data:/data
+      - ./npm/letsencrypt:/etc/letsencrypt
+    networks:
+      - secure-net
+
+  dvwa:
+    image: 'vulnerables/web-dvwa'
+    container_name: dvwa-target
+    restart: unless-stopped
+    networks:
+      - secure-net
+
+networks:
+  secure-net:
+    driver: bridge</code></pre>
+        </details>
+      </section>
+
+      <!-- Section : Résolution d'incidents (Debugging) -->
+      <section class="project-section">
+        <h2><i class="fas fa-tools"></i> 3. Résolution d'incidents (Debugging)</h2>
+        <p>La phase de mise au point a permis de surmonter plusieurs problématiques formatrices :</p>
+        <div class="debug-cards">
+          <div class="debug-card">
+            <h3>Erreur de résolution DNS locale</h3>
+            <p><strong>Problème :</strong> Affichage de la page par défaut "Congratulations!" par Nginx Proxy Manager.</p>
+            <p><strong>Solution :</strong> Harmonisation du nom de domaine <code>dvwa.local</code> dans le fichier <code>hosts</code> de la machine physique Windows et association avec le nom exact du conteneur (<code>dvwa-target</code>) dans le Proxy Host.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section : Compétences validées -->
+      <section class="project-section">
+        <h2><i class="fas fa-check-circle"></i> 4. Compétences Validées</h2>
+        <div class="skills-grid">
+          <div class="skill-item"><i class="fas fa-server"></i> Déploiement d'infrastructure multi-conteneurs</div>
+          <div class="skill-item"><i class="fas fa-shield-alt"></i> Configuration d'un Reverse Proxy & routage des flux web</div>
+          <div class="skill-item"><i class="fas fa-network-wired"></i> Maîtrise des réseaux virtuels Docker & résolution DNS</div>
+          <div class="skill-item"><i class="fas fa-bug"></i> Démarche méthodologique de debugging et d'analyse de logs</div>
+        </div>
+      </section>
+
+      <!-- Téléchargement du rapport complet -->
+      <section class="project-footer-cta">
+        <a href="../documents/TP-DOCKER-DVWA.pdf" target="_blank" class="btn btn-primary">
+          <i class="fas fa-file-pdf"></i> Télécharger le compte-rendu complet (PDF)
+        </a>
+      </section>
+
+    </main>
+
+    <!-- JS -->
+    <script src="../js/script.js"></script>
+</body>
+</html>

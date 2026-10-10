@@ -579,3 +579,98 @@ body[data-theme="light"] .hero-image { border: 1px solid var(--border); }
   margin-top: 20px;
   margin-right: 15px;
 }
+
+
+
+
+/* --- Style de la page Procédures --- */
+.page-content {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section-header h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.subtitle {
+  color: #94a3b8;
+  font-size: 1rem;
+  margin-bottom: 40px;
+}
+
+.procedures-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.procedure-card {
+  background-color: #1e293b; /* Fond carte sombre */
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 24px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.procedure-card:hover {
+  border-color: #38bdf8; /* Lueur bleue au survol */
+}
+
+.card-header h2 {
+  font-size: 1.25rem;
+  color: #f8fafc;
+  margin-bottom: 12px;
+}
+
+/* Badges / Tags style image de référence */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tag {
+  background-color: #1e3a8a33;
+  color: #38bdf8;
+  border: 1px solid #1d4ed84d;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.card-description {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* --- Témoin de page active dans la Navbar --- */
+.nav-links a {
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.2s ease;
+}
+
+/* Style du lien actif (Souligné brillant ou couleur dédiée) */
+.nav-links a.active {
+  color: #38bdf8 !important; /* Couleur bleu fluo / turquoise */
+  font-weight: 600;
+}
+
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #38bdf8;
+  border-radius: 2px;
+}
